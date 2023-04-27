@@ -9,13 +9,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-/* Database Context Dependency Injection */
-var connectionString = builder.Configuration.GetConnectionString("SakilaDB");
+// using Entity Framework - Database Context Dependency Injection
+/*var connectionString = builder.Configuration.GetConnectionString("SakilaDB");
 builder.Services.AddDbContext<LanguageContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-});
-/* */
+});*/
+
+// using Dapper
+
 
 var app = builder.Build();
 
