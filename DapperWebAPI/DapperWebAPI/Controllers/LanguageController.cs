@@ -11,21 +11,6 @@ namespace DapperWebAPI.Controllers
     [ApiController]
     public class LanguageController : ControllerBase
     {
-        /*private string _connection = @"Server=localhost; Database=sakila; Uid=root; Pwd=1234;";
-
-        [HttpGet]
-        public IActionResult Get()
-        {
-            IEnumerable<Models.Language> lst = null;
-            using (var db = new MySqlConnection(_connection))
-            {
-                var sql = "select * from language";
-                lst = db.Query<Models.Language>(sql);
-            }
-            
-            return Ok(lst);
-        }*/
-
         private readonly ILanguageRepository _languageRepository;
 
         public LanguageController(ILanguageRepository languageRepository)
@@ -34,10 +19,9 @@ namespace DapperWebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetLanguages()
+        public IEnumerable<Language> GetLanguages()
         {
-            var languages = _languageRepository.GetLanguages();
-            return Ok(languages);
+            return _languageRepository.GetLanguages();
         }
 
         [HttpGet("{languageId}")]

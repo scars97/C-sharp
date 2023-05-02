@@ -1,0 +1,8 @@
+C:\Users\qktjd\Desktop\.net\CSharpStudy\CSharpStudy\bin\Debug\CSharpStudy.exe.config
+C:\Users\qktjd\Desktop\.net\CSharpStudy\CSharpStudy\bin\Debug\CSharpStudy.exe
+C:\Users\qktjd\Desktop\.net\CSharpStudy\CSharpStudy\bin\Debug\CSharpStudy.pdb
+C:\Users\qktjd\Desktop\.net\CSharpStudy\CSharpStudy\obj\Debug\CSharpStudy.csproj.AssemblyReference.cache
+C:\Users\qktjd\Desktop\.net\CSharpStudy\CSharpStudy\obj\Debug\CSharpStudy.csproj.SuggestedBindingRedirects.cache
+C:\Users\qktjd\Desktop\.net\CSharpStudy\CSharpStudy\obj\Debug\CSharpStudy.csproj.CoreCompileInputs.cache
+C:\Users\qktjd\Desktop\.net\CSharpStudy\CSharpStudy\obj\Debug\CSharpStudy.exe
+C:\Users\qktjd\Desktop\.net\CSharpStudy\CSharpStudy\obj\Debug\CSharpStudy.pdb

@@ -8,7 +8,6 @@ namespace DapperWebAPI.Repository
     public class LanguageRepository : ILanguageRepository
     {
 
-        // private IConfiguration _configuration;
         private readonly string? _connectionString;
 
         public LanguageRepository(IConfiguration config)
@@ -21,7 +20,7 @@ namespace DapperWebAPI.Repository
             using (var connection = new MySqlConnection(_connectionString))
             {
                 var sql = @"select * from language";
-                
+                connection.Open();
                 return connection.Query<Language>(sql);
             }
         }
