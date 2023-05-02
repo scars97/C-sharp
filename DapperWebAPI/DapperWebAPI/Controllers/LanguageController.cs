@@ -34,13 +34,14 @@ namespace DapperWebAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Language> GetLanguages()
+        public IActionResult GetLanguages()
         {
-            return _languageRepository.GetLanguages();
+            var languages = _languageRepository.GetLanguages();
+            return Ok(languages);
         }
 
         [HttpGet("{languageId}")]
-        public Language GetLanguage(int languageId) 
+        public Language GetLanguage(byte languageId) 
         {
             return _languageRepository.GetLanguage(languageId);
         }
@@ -48,20 +49,20 @@ namespace DapperWebAPI.Controllers
         [HttpPost]
         public void PostLanguage([FromBody]Language language) 
         {
-            language.LastUpdate = DateTime.Now;
+            language.last_update = DateTime.Now;
             _languageRepository.CreateLanguage(language);
         }
 
         [HttpPut("{languageId}")]
-        public void PutLanguage(int languageId, [FromBody]Language language) 
+        public void PutLanguage(byte languageId, [FromBody]Language language) 
         {
-            language.LanguageId = languageId;
-            language.LastUpdate = DateTime.Now;
+            language.language_id = languageId;
+            language.last_update = DateTime.Now;
             _languageRepository.UpdateLanguage(language);
         }
 
         [HttpDelete("{languageId}")]
-        public void DeleteLanguage(int languageId)
+        public void DeleteLanguage(byte languageId)
         {
             _languageRepository.DeleteLanguage(languageId);
         }

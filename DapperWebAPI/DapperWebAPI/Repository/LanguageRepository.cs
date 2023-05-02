@@ -21,12 +21,12 @@ namespace DapperWebAPI.Repository
             using (var connection = new MySqlConnection(_connectionString))
             {
                 var sql = @"select * from language";
-                connection.Open();
+                
                 return connection.Query<Language>(sql);
             }
         }
 
-        public Language GetLanguage(int LanguageId)
+        public Language GetLanguage(byte LanguageId)
         {
             using (var connection = new MySqlConnection(_connectionString))
             {
@@ -44,7 +44,7 @@ namespace DapperWebAPI.Repository
             {
                 var sql = @"insert into language(name,last_update) values(@name,@last_update)";
                 connection.Open();
-                connection.Execute(sql, new {name=language.Name, last_update=language.LastUpdate});
+                connection.Execute(sql, new {name=language.name, last_update=language.last_update});
             }
         }
 
@@ -54,11 +54,11 @@ namespace DapperWebAPI.Repository
             {
                 var sql = @"update language set name=@name, last_update=@last_update where language_id=@language_id";
                 connection.Open();
-                connection.Execute(sql, new { name = language.Name, last_update = language.LastUpdate, language_id=language.LanguageId });
+                connection.Execute(sql, new { name = language.name, last_update = language.last_update, language_id=language.language_id });
             }
         }
 
-        public void DeleteLanguage(int LanguageId)
+        public void DeleteLanguage(byte LanguageId)
         {
             using (var connection = new MySqlConnection(_connectionString))
             {

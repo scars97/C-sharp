@@ -6,15 +6,11 @@ namespace DapperWebAPI.Models
     [Table("language")]
     public class Language
     {
-        [Key]
-        [Column("language_id")]
-        public int LanguageId { get; set; }
+        public byte language_id { get; set; }
 
-        [Column("name")]
-        public string? Name { get; set; }
+        public string? name { get; set; }
 
-        [Column("last_update")]
-        public DateTime LastUpdate { get; set; }
+        public DateTime last_update { get; set; }
 
     }
 }

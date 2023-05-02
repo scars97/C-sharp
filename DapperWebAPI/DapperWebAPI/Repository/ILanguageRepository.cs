@@ -6,13 +6,13 @@ namespace DapperWebAPI.Repository
     {
         IEnumerable<Language> GetLanguages();
 
-        Language GetLanguage(int LanguageId);
+        Language GetLanguage(byte LanguageId);
 
         void CreateLanguage(Language language);
 
         void UpdateLanguage(Language language);
 
-        void DeleteLanguage(int LanguageId);
+        void DeleteLanguage(byte LanguageId);
 
     }
 }
