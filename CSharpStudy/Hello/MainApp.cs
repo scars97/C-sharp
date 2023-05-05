@@ -4,24 +4,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Hello
 {
     internal class MainApp
     {
+        // 파일 복사 후 복사한 파일 용향 반환
+        static async Task<long> CopyAsync(string FromPath, string ToPath)
+        {
+            using(
+                var fromStream = new FileStream(FromPath, FileMode.Open))
+            {
+                long totalCopied = 0;
+
+                using(
+                    var toStream = new FileStream(ToPath, FileMode.Create))
+                {
+                    byte[] buffer = new byte[1024];
+                    int nRead = 0;
+                    while((nRead =
+                        await fromStream.ReadAsync(buffer,0, buffer.Length)) != 0)
+                    {
+                        await toStream.WriteAsync(buffer,0, nRead);
+                        totalCopied += nRead;
+                    }
+                }
+
+                return totalCopied;
+            }
+        }
+
+        static async void DoCopy(string FromPath, string ToPath)
+        {
+            long totalCopied = await CopyAsync(FromPath, ToPath);
+            Console.WriteLine($"Copied Total {totalCopied} Bytes.");
+        }
+
         static void Main(string[] args)
         {
+            if(args.Length < 2) 
+            {
+                Console.WriteLine("Usage : AsyncFileIO <Source> <Destination>");
+                return;
+            }
 
-            Console.WriteLine("사각형의 너비를 입력하세요.");
-            string width = Console.ReadLine();
+            DoCopy(args[0], args[1]);
 
-            Console.WriteLine("사각형의 높이를 입력하세요.");
-            string height = Console.ReadLine();
-
-            int result = Convert.ToInt32(width) * Convert.ToInt32(height);
-            Console.Write("사각형의 넓이는 : " + result);
-
-
+            Console.ReadLine();
         }
     }
 }
